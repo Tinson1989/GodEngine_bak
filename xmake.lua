@@ -1,16 +1,33 @@
-add_rules("mode.debug", "mode.release")
+add_rules("mode.debug", "mode.release", "mode.releasedbg", "mode.minsizerel")
 
 set_project("GodEngine")
 set_languages("cxx17")
 if is_mode("debug") then
     set_suffixname("_d")
-    -- add_defines("DEBUG_ENABLED")--用于调试用
+    add_defines("_DEBUG","WIN32")
     set_runtimes("MTd")
+elseif is_mode("release") then 
+    add_defines("_RELEASE")
+elseif is_mode("releasedbg") then 
+    add_defines("_RELEASEWITHDEBINFO")
+elseif is_mode("minsizerel") then
+    add_defines("_MINSIZEREL")
 end
 
-target("GodEngine")
+target("framework")
+    set_kind("static")
+    add_headerfiles("Framework/**.hpp")
+    add_headerfiles("Framework/**.h")
+    add_includedirs("Framework")
+    add_files("Framework/**.cpp")
+    
+
+target("winshell")
     set_kind("binary")
-    add_files("src/*.cpp")
+    add_files("Platform/Windows/*.cpp")
+    add_headerfiles("Platform/Windows/*.hpp")
+    -- add_deps("framework")
+    add_includedirs("Framework")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
