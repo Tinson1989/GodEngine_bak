@@ -19,14 +19,14 @@ target("framework")
     add_headerfiles("Framework/**.hpp")
     add_headerfiles("Framework/**.h")
     add_includedirs("Framework")
-    add_files("Framework/**.cpp")
+    -- add_files("Framework/**.cpp")
     
 
 target("winshell")
     set_kind("binary")
     add_files("Platform/Windows/*.cpp")
     add_headerfiles("Platform/Windows/*.hpp")
-    -- add_deps("framework")
+    add_deps("framework")
     add_includedirs("Framework")
 
 --

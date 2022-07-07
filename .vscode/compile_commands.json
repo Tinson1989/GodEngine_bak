@@ -1,1 +1,6 @@
 [
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/IFramework", "/D_RELEASE", "/Fobuild\\.objs\\winshell\\windows\\x64\\release\\Platform\\Windows\\Game.cpp.obj", "Platform\\Windows\\Game.cpp"],
+  "file": "Platform\\Windows\\Game.cpp"
+}]

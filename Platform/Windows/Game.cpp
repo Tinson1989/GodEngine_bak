@@ -1,8 +1,9 @@
 #include<iostream>
 #include"Foundation/Asset.hpp"
+#include"Foundation/EngineConfig.hpp"
 #include <crtdbg.h>
 int main(){
-    std::cout << "EngineVersion:" << "0.0.1" << std::endl;
+    std::cout << "EngineVersion:" << Engine_Version_Major << "." << Engine_Version_Minor << std::endl;
     std::cout << "EngineBuildType" << BUILD_TYPE << std::endl;
     int a = 1, b = 2;
     GOD_ASSERT(a > b, "XXXXXXXXXXXX");
