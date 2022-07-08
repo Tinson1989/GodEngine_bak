@@ -199,7 +199,113 @@ namespace GodEngine {
 					m[k][j] *= m[k][k];
 				}
 			}
+			for(i = 0; i < d; i++) {
+				if(i != k) {
+					for(j = 0; j < d; j++) {
+						if(j != k) {
+							m[i][j] = m[i][j] - m[i][k] * m[k][j];
+						}
+					}
+				}
+			}
+			for( i = 0; i < d; i++) {
+				if(i != k) {
+					m[i][k] *= -m[k][k];
+				}
+			}
 		}
+
+		for(k = d - 1; k>= 0; k--) {
+			if(js[k] != k) {
+				for(l = 0; l < d; l++) {
+					T temp = m[k][l];
+					m[k][l] = m[js[k]][l];
+					m[js[k]][l] = temp;
+				}
+			}
+			if(is[k] != k) {
+				for(l = 0; l < d; l++) {
+					T temp = m[l][k];
+					m[l][k] = m[l][is[k]];
+					m[l][is[k]] = temp;
+				}
+			}
+		}
+
+		out = m;
+		return fDet * f;
 	}
+
+	inline Vector3f transformPoint(const Matrix4x4f& matrix, Vector3f& point) {
+		Vector4f hSpace = Vector4f(point, 1);
+		Vector4f temp = Vector4f(0);
+
+		for(int r = 0; r < 4; r++) {
+			for(int c = 0; c < 4; c++) {
+				temp[r] = hSpace[c] * matrix[r][c];
+			}
+		}
+		return Vector3f(temp.x, temp.y, temp.z);
+	}
+
+	inline Vector3f transformVector(const Matrix4x4f& matrix, Vector3f& point) {
+		Vector4f hSpace = Vector4f(point, 1);
+		Vector4f temp = Vector4f(0);
+
+		for (int r = 0; r < 4; r++) {
+			for (int c = 0; c < 4; c++) {
+				temp[r] = hSpace[c] * matrix[r][c];
+			}
+		}
+		return Vector3f(temp.x, temp.y, temp.z);
+	}
+
+	inline Vector3f transformVector(const Matrix3x3f& matrix, Vector3f& vector) {
+		Vector3f temp = Vector3f(0);
+
+		for (int r = 0; r < 3; r++) {
+			for (int c = 0; c < 3; c++) {
+				temp[r] = vector[c] * matrix[r][c];
+			}
+		}
+		return temp;
+	}
+
+	//构建旋转矩阵
+	inline void buildMatrixRotationX(Matrix4x4f& matrix, const float radio) {
+		float c = cosf(radio), s = sinf(radio);
+		Matrix4x4f tmp = { {{
+				{1.0f, 0.0f, 0.0f, 0.0f},
+				{0.0f, c   , -s,   0.0f},
+				{0.0f, s   , c,    0.0f},
+				{0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	//构建旋转矩阵
+	inline void buildMatrixRotationY(Matrix4x4f& matrix, const float radio) {
+		float c = cosf(radio), s = sinf(radio);
+		Matrix4x4f tmp = { {{
+				{	 c,	0.0f,    s, 0.0f },
+				{ 0.0f,	1.0f, 0.0f, 0.0f },
+				{	-s, 0.0f,    c, 0.0f },
+				{ 0.0f, 0.0f, 0.0f, 1.0f }
+			} } };
+		matrix = tmp;
+	}
+
+	//构建旋转矩阵
+	inline void buildMatrixRotationZ(Matrix4x4f& matrix, const float radio) {
+		float c = cosf(radio), s = sinf(radio);
+		Matrix4x4f tmp = { {{
+				{ c,	-s,  0.0f, 0.0f },
+				{ s,	c,    0.0f, 0.0f },
+				{ 0.0f, 0.0f, 1.0f, 0.0f },
+				{ 0.0f, 0.0f, 0.0f, 1.0f }
+			}} };
+		matrix = tmp;
+	}
+
 
 }
