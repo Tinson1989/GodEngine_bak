@@ -308,4 +308,208 @@ namespace GodEngine {
 	}
 
 
+	//
+	inline void buildMatrixYawPitchRoll(Matrix4x4f& matrix, const float yaw, const float pitch, const float roll) {
+		float cYaw, cPitch, cRoll, sYaw, sPitch, sRoll;
+
+		cYaw = cosf(yaw);
+		cPitch = cosf(pitch);
+		cRoll = cosf(roll);
+
+		sYaw = sinf(yaw);
+		sPitch = sinf(pitch);
+		sRoll = sinf(roll);
+
+		Matrix4x4f tmp = { {{
+				{cRoll * cYaw + sRoll * sPitch * sYaw, (-sRoll * cYaw) + (cRoll * sPitch * sYaw), cPitch * sYaw, 0.0f},
+				{sRoll * cPitch                      , (cRoll * cPitch),                          -sPitch,       0.0f},
+				{cRoll * -sYaw + sRoll * sPitch * cYaw, (sRoll * sYaw) + (cRoll * sPitch * cYaw), cPitch * cYaw, 0.0f},
+				{0.0f,                                  0.0f,                                     0.0f,          1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	//左手坐标系
+	inline void buildMatrixViewLookatLH(Matrix4x4f& matrix, const Vector3f& position, const Vector3f& lookAt, const Vector3f& up) {
+		Vector3f xAxis, yAxis, zAxis;
+		float tmp1, tmp2, tmp3;
+		vectorSub(zAxis, lookAt, position);
+		normalize(zAxis);
+
+		cross(xAxis, up, zAxis);
+		normalize(xAxis);
+
+		cross(yAxis, zAxis, xAxis);
+
+		tmp1 = -dot(xAxis, position);
+		tmp2 = -dot(yAxis, position);
+		tmp3 = -dot(zAxis, position);
+
+		Matrix4x4f tmp = { {{
+				{ xAxis.x, xAxis.y, xAxis.z, tmp1},
+				{ yAxis.x, yAxis.y, yAxis.z, tmp2},
+				{ zAxis.x, zAxis.y, zAxis.z, tmp3},
+				{ 0,       0,       0,       1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	//右手坐标系
+	inline void buildMatrixViewLookatRH(Matrix4x4f& matrix, const Vector3f& position, const Vector3f& lookAt, const Vector3f& up) {
+		Vector3f xAxis, yAxis, zAxis;
+		float tmp1, tmp2, tmp3;
+		//这里好像和Learn-OpenGL的有点像
+		vectorSub(zAxis, position, lookAt);
+		normalize(zAxis);
+
+		cross(xAxis, up, zAxis);
+		normalize(xAxis);
+
+		cross(yAxis, zAxis, xAxis);
+
+		tmp1 = -dot(xAxis, position);
+		tmp2 = -dot(yAxis, position);
+		tmp3 = -dot(zAxis, position);
+
+		Matrix4x4f tmp = { {{
+				{ xAxis.x, xAxis.y, xAxis.z, tmp1},
+				{ yAxis.x, yAxis.y, yAxis.z, tmp2},
+				{ zAxis.x, zAxis.y, zAxis.z, tmp3},
+				{ 0,       0,       0,       1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+
+	inline void buildMatrixPerspectiveFovLH(Matrix4x4f& matrix, const float fov, const float aspect, const float zn, const float zf) {
+		auto yScale = 1.0f / tanf(fov * 0.5f);
+		auto xScale = yScale / aspect;
+
+		Matrix4x4f tmp = { {{
+				{ xScale,	 0.0f,			  0.0f,					  0.0f},
+				{	0.0f,  yScale,			  0.0f,					  0.0f},
+				{	0.0f,    0.0f,	zf / (zf - zn), (-zn * zf) / (zf - zn)},
+				{	0.0f,    0.0f,			  1.0f,					  0.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	inline void buildMatrixPerspectiveFovRH(Matrix4x4f& matrix, const float fov, const float aspect, const float zn, const float zf) {
+		auto yScale = 1.0f / tanf(fov * 0.5f);
+		auto xScale = yScale / aspect;
+
+		Matrix4x4f tmp = { {{
+				{ xScale,	 0.0f,			  0.0f,					  0.0f},
+				{	0.0f,  yScale,			  0.0f,					  0.0f},
+				{	0.0f,    0.0f,	zf / (zn - zf),  (zn * zf) / (zn - zf)},
+				{	0.0f,    0.0f,			 -1.0f,					  0.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	//正交矩阵(左手坐标系)
+	inline void buildMatrixOrthoLH(Matrix4x4f& matrix, const float width, const float height, const float zn, const float zf) {
+		Matrix4x4f tmp = { {{
+				{ 2 / width, 0.0f, 0.0f, 0.0f},
+				{ 0.0f, 2 / height, 0.0f, 0.0f},
+				{ 0.0f, 0.0f, 1.0f / (zf - zn), - zn / (zf - zn)},
+				{ 0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	//正交矩阵(右手坐标系)
+	inline void buildMatrixOrthoRH(Matrix4x4f& matrix, const float width, const float height, const float zn, const float zf) {
+		Matrix4x4f tmp = { {{
+				{ 2 / width, 0.0f, 0.0f, 0.0f},
+				{ 0.0f, 2 / height, 0.0f, 0.0f},
+				{ 0.0f, 0.0f, 1.0f / (zn - zf), zn / (zn - zf)},
+				{ 0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	//平移矩阵
+	inline void buildMatrixTranslation(Matrix4x4f& matrix, const float x, const float y, const float z) {
+		Matrix4x4f tmp = { {{
+				{ 1.0f, 0.0f, 0.0f, x},
+				{ 0.0f, 1.0f, 0.0f, y},
+				{ 0.0f, 0.0f, 1.0f, z},
+				{ 0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	inline Matrix4x4f buildMatrixTranslation(const float x, const float y, const float z) {
+		Matrix4x4f tmp = { {{
+				{ 1.0f, 0.0f, 0.0f, x},
+				{ 0.0f, 1.0f, 0.0f, y},
+				{ 0.0f, 0.0f, 1.0f, z},
+				{ 0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		return tmp;
+	}
+
+	//缩放矩阵
+	inline void buildMatrixScale(Matrix4x4f& matrix, const float x, const float y, const float z) {
+		Matrix4x4f tmp = { {{
+				{ x, 0.0f, 0.0f, 0.0},
+				{ 0.0f, y, 0.0f, 0.0},
+				{ 0.0f, 0.0f, z, 0.0},
+				{ 0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	//旋转矩阵，需要了解一下几何意义
+	inline void buildMatrixRotationAxis(Matrix4x4f& matrix, const Vector3f& axis, const float radio) {
+		float c = cosf(radio), s = sinf(radio), oneMinusC = 1.0f - c;
+
+		Matrix4x4f tmp = { {{
+				{ c + axis.x * axis.x * oneMinusC, axis.x * axis.y * oneMinusC - axis.z * s, axis.x * axis.z * oneMinusC + axis.y * s, 0.0f },
+				{axis.x * axis.y * oneMinusC + axis.z * s, c + axis.y * axis.y * oneMinusC, axis.y * axis.z * oneMinusC - axis.x *s, 0.0f},
+				{axis.x * axis.z * oneMinusC - axis.y * s, axis.y * axis.z * oneMinusC + axis.x * s, c + axis.z * axis.z * oneMinusC, 1.0f},
+				{ 0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	//绕着任意轴旋转
+	//https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation
+	inline void matrixRotationQuaternion(Matrix4x4f& matrix, Quaternion q) {
+		Matrix4x4f tmp = { {{
+				{1.0f - 2.0f * q.y * q.y - 2.0f * q.z * q.z, 2.0f * q.x * q.y - 2.0f * q.w * q.z, 2.0f * q.x * q.z + 2.0f * q.w * q.y, 0.0f},
+				{2.0f * q.x * q.y + 2.0f * q.w * q.z, 1.0f - 2.0f * q.x * q.x - 2.0f * q.z * q.z, 2.0f * q.y * q.z - 2.0f * q.y * q.z - 2.0f * q.w * q.x, 0.0f},
+				{2.0f * q.x * q.z - 2.0f * q.w * q.z, 2.0f * q.y * q.z + 2.0f * q.w * q.x, 1.0f - 2.0f * q.x * q.x - 2.0f * q.y * q.y, 0.0f},
+				{0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	inline Matrix4x4f matrixRotationQuaternion(Quaternion q) {
+		Matrix4x4f tmp;
+		matrixRotationQuaternion(tmp, q);
+		return tmp;
+	}
+
+	//构建单位矩阵
+	inline void buildMatrixIdentity(Matrix4x4f& matrix) {
+		Matrix4x4f tmp = { {{
+				{1.0f, 0.0f, 0.0f, 0.0f},
+				{0.0f, 1.0f, 0.0f, 0.0f},
+				{0.0f, 0.0f, 1.0f, 0.0f},
+				{0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		matrix = tmp;
+	}
+
+	inline Matrix4x4f buildMatrisIndentity() {
+		Matrix4x4f tmp = { {{
+				{1.0f, 0.0f, 0.0f, 0.0f},
+				{0.0f, 1.0f, 0.0f, 0.0f},
+				{0.0f, 0.0f, 1.0f, 0.0f},
+				{0.0f, 0.0f, 0.0f, 1.0f}
+			}} };
+		return tmp;
+	}
 }
