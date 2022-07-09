@@ -4,6 +4,7 @@ set_project("GodEngine")
 set_languages("cxx17")
 if is_mode("debug") then
     set_suffixname("_d")
+    add_defines("_DEBUG")
     add_defines("_DEBUG","WIN32")
     set_runtimes("MTd")
 elseif is_mode("release") then 
@@ -19,7 +20,7 @@ target("framework")
     add_headerfiles("Framework/**.hpp")
     add_headerfiles("Framework/**.h")
     add_includedirs("Framework")
-    -- add_files("Framework/**.cpp")
+    add_files("Framework/**.cpp")
     
 
 target("winshell")
