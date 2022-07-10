@@ -30,6 +30,13 @@ target("winshell")
     add_deps("framework")
     add_includedirs("Framework")
 
+target("memoryTest")
+    set_group("test")
+    set_kind("binary")
+    add_files("Test/TestMemoryManager.cpp")
+    add_deps("framework")
+    add_includedirs("Framework")
+
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
