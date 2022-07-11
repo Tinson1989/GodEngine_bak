@@ -7,6 +7,7 @@
 
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"
+#include "Mesh.hpp"
 
 namespace GodEngine {
 	class GraphicsManager : public ITickableModule {
@@ -19,5 +20,8 @@ namespace GodEngine {
 
 		virtual std::shared_ptr<IVertexBuffer> CreateVertexBuffer(void* data, int count, VertexFormat vf) noexcept = 0;
 		virtual std::shared_ptr<IIndexBuffer> CreateIndexBuffer(void* data, int count, IndexFormat iformat) noexcept = 0;
+
+		virtual std::shared_ptr<IMesh> CreateRenderMesh() noexcept = 0;
+		virtual std::shared_ptr<IMesh> CreateRenderMesh(aiMesh* mesh, const aiScene* world) noexcept = 0;
 	};
 }
