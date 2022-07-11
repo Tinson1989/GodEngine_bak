@@ -1,5 +1,6 @@
 #pragma once
 #include "VertexBuffer.hpp"
+#include "assimp/mesh.h"
 #include "Interface/IResource.hpp"
 
 namespace GodEngine {
@@ -27,8 +28,11 @@ namespace GodEngine {
 
 	class IMesh : public IRenderResource {
 	public:
-		//todo 这里需要引入assimp
-		//virtual void Initialize(aiMesh* mesh) noexcept = 0;
+		virtual void Initialize(aiMesh* mesh) noexcept = 0;
 		virtual void Initialize(void* data, int count, VertexFormat vf) noexcept = 0;
+		virtual void InitializeUI() noexcept = 0;
+		virtual void InitializeTerrain() noexcept = 0;
+
+		virtual void Render(Entity* self) noexcept = 0;
 	};
 }

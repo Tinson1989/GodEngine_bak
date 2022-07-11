@@ -30,8 +30,10 @@ target("framework")
     else
         libPath = "External/Assimp/lib/assimp-vc143-mt"
     end
-    add_linkdirs(includePath)
+    -- add_linkdirs(includePath)
     add_links(libPath)
+    add_includedirs("External/Assimp/include")
+    add_headerfiles("External/Assimp/include/**.h")
     
     
 
