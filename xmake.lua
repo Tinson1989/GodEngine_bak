@@ -21,6 +21,18 @@ target("framework")
     add_headerfiles("Framework/**.h")
     add_includedirs("Framework")
     add_files("Framework/**.cpp")
+
+    --添加assimp库
+    local includePath = "External/Assimp/include"
+    local libPath = ""
+    if is_mode("debug") then
+        libPath = "External/Assimp/lib/assimp-vc143-mtd"
+    else
+        libPath = "External/Assimp/lib/assimp-vc143-mt"
+    end
+    add_linkdirs(includePath)
+    add_links(libPath)
+    
     
 
 target("winshell")
