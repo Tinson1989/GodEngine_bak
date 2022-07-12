@@ -1,1 +1,26 @@
 [
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Memory\\Allocator.cpp.obj", "Framework\\Memory\\Allocator.cpp"],
+  "file": "Framework\\Memory\\Allocator.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Memory\\MemoryManager.cpp.obj", "Framework\\Memory\\MemoryManager.cpp"],
+  "file": "Framework\\Memory\\MemoryManager.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Object\\Entity.cpp.obj", "Framework\\Object\\Entity.cpp"],
+  "file": "Framework\\Object\\Entity.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Object\\World.cpp.obj", "Framework\\Object\\World.cpp"],
+  "file": "Framework\\Object\\World.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\winshell\\windows\\x64\\debug\\Platform\\Windows\\Game.cpp.obj", "Platform\\Windows\\Game.cpp"],
+  "file": "Platform\\Windows\\Game.cpp"
+}]

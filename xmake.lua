@@ -1,4 +1,8 @@
 add_rules("mode.debug", "mode.release", "mode.releasedbg", "mode.minsizerel")
+--包含子目录
+local function importSubProject(file)
+    includes(path.join("XMakeMgr",file))
+end
 
 set_project("GodEngine")
 set_languages("cxx17")
@@ -44,12 +48,9 @@ target("winshell")
     add_deps("framework")
     add_includedirs("Framework")
 
-target("memoryTest")
-    set_group("test")
-    set_kind("binary")
-    add_files("Test/TestMemoryManager.cpp")
-    add_deps("framework")
-    add_includedirs("Framework")
+
+
+importSubProject("test.lua")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
