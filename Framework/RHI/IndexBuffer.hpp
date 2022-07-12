@@ -7,7 +7,7 @@ namespace GodEngine {
 		IF_UINT16,
 		IF_UINT32,
 	};
-
+	//渲染模型的顶点索引缓冲。主要的作用是复用顶点数据，减少带宽消耗。
 	class IIndexBuffer : public IRenderResource {
 	public:
 		virtual void Initialize(void* data, unsigned int count, IndexFormat iformat) noexcept = 0;

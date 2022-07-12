@@ -5,6 +5,7 @@ namespace GodEngine{
     class IRenderResource {
 	    
     };
+    //某一次渲染调用过程中的 “常量缓冲”，一般包含例如 MVP矩阵、光照信息、摄像机信息、或者一些全局信息等。
 
     struct ConstantBuffer {
         Matrix4x4f  world;          //世界矩阵

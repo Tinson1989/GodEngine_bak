@@ -6,7 +6,7 @@ namespace GodEngine {
 		Default = 1,
 		Cubemap = 2,
 	};
-
+	//äÖÈ¾ÓÃµ½µÄÌùÍ¼
 	class ITexture : public IRenderResource {
 	public:
 		ITexture(TextureType type) : mType(type){}

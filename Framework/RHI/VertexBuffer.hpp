@@ -12,7 +12,7 @@ namespace GodEngine {
 		VF_BONE_IDX_4I,
 		VF_BONE_WEIGHT_4F,
 	};
-
+	//渲染模型的顶点数据缓冲。一般而言这些数据包括顶点的模型空间坐标、uv坐标、法向量等。
 	class IVertexBuffer : public IRenderResource {
 	public:
 		virtual void Initailize(void* data, unsigned int count, VertexFormat vf) noexcept = 0;
