@@ -39,18 +39,9 @@ target("framework")
     add_includedirs("External/Assimp/include")
     add_headerfiles("External/Assimp/include/**.h")
     
-    
-
-target("winshell")
-    set_kind("binary")
-    add_files("Platform/Windows/*.cpp")
-    add_headerfiles("Platform/Windows/*.hpp")
-    add_deps("framework")
-    add_includedirs("Framework")
-
-
 
 importSubProject("test.lua")
+importSubProject("platform.lua")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
