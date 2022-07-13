@@ -16,4 +16,12 @@ target("D3DTest")
     add_includedirs(frameworkPath)
     add_filegroups("src", {rootdir = rootPath})
     -- set_toolchains("clang")
-    add_links("user32")
+    add_links("user32","d3d11","d3dcompiler")
+    after_build(function(target)
+        if is_mode("debug") then
+            os.cp(path.join(rootPath, "Shader/*.*") , "$(buildir)/windows/x64/release")
+        else
+            os.cp(path.join(rootPath, "Shader/*.*") , "$(buildir)/windows/x64/debug")
+        end
+    end)
+    -- os.cp("$(rootPath)", "$(buildir)/windows/x64/debug")
