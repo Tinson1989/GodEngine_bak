@@ -1,5 +1,6 @@
 local rootPath = path.join(os.projectdir(), "Platform") --local lib_path = path.join(os.projectdir(),"dev","tools","DataReport")
 local frameworkPath = path.join(os.projectdir(), "Framework")
+local externalPath = path.join(os.projectdir(), "External")
 -- target("memoryTest")
 --     set_group("test")
 --     set_kind("binary")
@@ -17,6 +18,12 @@ target("windows")
     add_filegroups("src", {rootdir = path.join(rootPath, "Windows")})
     set_group("platform")
     set_default(true)
+    add_links("user32","d3d11","d3dcompiler")
+
+    --添加glad库
+    add_includedirs(path.join(externalPath, "Glad/include"))
+    add_headerfiles(path.join(externalPath, "Glad/include/**.h"))
+    add_files(path.join(externalPath, "Glad/src/*.c"))
 
 target("empty")
     set_kind("binary")

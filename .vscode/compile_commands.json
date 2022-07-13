@@ -1,26 +1,61 @@
 [
 {
   "directory": "f:\\study\\GodEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Memory\\Allocator.cpp.obj", "Framework\\Memory\\Allocator.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/If:\\study\\GodEngine\\Framework", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\empty\\windows\\x64\\debug\\Platform\\Empty\\Game.cpp.obj", "Platform\\Empty\\Game.cpp"],
+  "file": "Platform\\Empty\\Game.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/IExternal\\Glad\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Application\\Application.cpp.obj", "Framework\\Application\\Application.cpp"],
+  "file": "Framework\\Application\\Application.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/IExternal\\Glad\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Memory\\Allocator.cpp.obj", "Framework\\Memory\\Allocator.cpp"],
   "file": "Framework\\Memory\\Allocator.cpp"
 },
 {
   "directory": "f:\\study\\GodEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Memory\\MemoryManager.cpp.obj", "Framework\\Memory\\MemoryManager.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/IExternal\\Glad\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Memory\\MemoryManager.cpp.obj", "Framework\\Memory\\MemoryManager.cpp"],
   "file": "Framework\\Memory\\MemoryManager.cpp"
 },
 {
   "directory": "f:\\study\\GodEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Object\\Entity.cpp.obj", "Framework\\Object\\Entity.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/IExternal\\Glad\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Object\\Entity.cpp.obj", "Framework\\Object\\Entity.cpp"],
   "file": "Framework\\Object\\Entity.cpp"
 },
 {
   "directory": "f:\\study\\GodEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Object\\World.cpp.obj", "Framework\\Object\\World.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/IExternal\\Glad\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\Framework\\Object\\World.cpp.obj", "Framework\\Object\\World.cpp"],
   "file": "Framework\\Object\\World.cpp"
 },
 {
   "directory": "f:\\study\\GodEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/IFramework", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\winshell\\windows\\x64\\debug\\Platform\\Windows\\Game.cpp.obj", "Platform\\Windows\\Game.cpp"],
-  "file": "Platform\\Windows\\Game.cpp"
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/IExternal\\Glad\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\External\\Glad\\src\\glad.c.obj", "External\\Glad\\src\\glad.c"],
+  "file": "External\\Glad\\src\\glad.c"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/IExternal\\Glad\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\External\\Glad\\src\\glad_glx.c.obj", "External\\Glad\\src\\glad_glx.c"],
+  "file": "External\\Glad\\src\\glad_glx.c"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MTd", "/IFramework", "/IExternal\\Assimp\\include", "/IExternal\\Glad\\include", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\framework\\windows\\x64\\debug\\External\\Glad\\src\\glad_wgl.c.obj", "External\\Glad\\src\\glad_wgl.c"],
+  "file": "External\\Glad\\src\\glad_wgl.c"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/If:\\study\\GodEngine\\Framework", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\memoryTest\\windows\\x64\\debug\\Test\\TestMemoryManager.cpp.obj", "Test\\TestMemoryManager.cpp"],
+  "file": "Test\\TestMemoryManager.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/If:\\study\\GodEngine\\Framework", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\D3DTest\\windows\\x64\\debug\\Test\\TestD3D.cpp.obj", "Test\\TestD3D.cpp"],
+  "file": "Test\\TestD3D.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/std:c++17", "/MTd", "/If:\\study\\GodEngine\\Framework", "/D_DEBUG", "/DWIN32", "/Fobuild\\.objs\\windows\\windows\\x64\\debug\\Platform\\Windows\\WindowsApplication.cpp.obj", "Platform\\Windows\\WindowsApplication.cpp"],
+  "file": "Platform\\Windows\\WindowsApplication.cpp"
 }]

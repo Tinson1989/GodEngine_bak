@@ -1,5 +1,7 @@
 #pragma once
 namespace GodEngine {
+
+#define CHECK_APPLICATION_INIT(result) if(result != 0){exit(result);}
 	class IApplication {
 	public:
 		virtual int Initialize() noexcept = 0;

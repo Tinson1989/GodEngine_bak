@@ -38,6 +38,11 @@ target("framework")
     add_links(libPath)
     add_includedirs("External/Assimp/include")
     add_headerfiles("External/Assimp/include/**.h")
+
+    --添加glad库
+    add_includedirs("External/Glad/include")
+    add_headerfiles("External/Glad/include/**.h")
+    add_files("External/Glad/src/*.c")
     
 
 importSubProject("test.lua")
