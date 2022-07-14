@@ -10,57 +10,57 @@ namespace GodEngine {
 	struct Matrix {
 		union {
 			T data[ROWS][COLS];
+		};
 
-			T* operator[](int rowIndex) {
-				return data[rowIndex];
-			}
+		T* operator[](int rowIndex) {
+			return data[rowIndex];
+		}
 
-			const T* operator[] (int rowIndex) const{
-				return data[rowIndex];
-			}
+		const T* operator[] (int rowIndex) const {
+			return data[rowIndex];
+		}
 
-			operator T*(){
-				return &data[0][0];
-			}
+		operator T* () {
+			return &data[0][0];
+		}
 
-			operator const T*() const{
-				return reinterpret_cast<const T*>(&data[0][0]);
-			}
+		operator const T* () const {
+			return reinterpret_cast<const T*>(&data[0][0]);
+		}
 
 
-			Matrix& operator=(const T* _data) {
-				memcpy(data, _data, ROWS * COLS * sizeof(T));
-				return *this;
-			}
+		Matrix& operator=(const T* _data) {
+			memcpy(data, _data, ROWS * COLS * sizeof(T));
+			return *this;
+		}
 
-			bool operator==(const Matrix& m) {
-				for(int r = 0; r < ROWS; r++) {
-					for(int c = 0; c < COLS; c++) {
-						if(data[r][c] != m[r][c]) {
-							return false;
-						}
+		bool operator==(const Matrix& m) {
+			for (int r = 0; r < ROWS; r++) {
+				for (int c = 0; c < COLS; c++) {
+					if (data[r][c] != m[r][c]) {
+						return false;
 					}
 				}
+			}
+			return true;
+		}
+
+		template<int _ROWS, int _COLS>
+		bool operator!=(const Matrix<T, _ROWS, _COLS>& m) {
+			if ((_ROWS != ROWS) || (_COLS != COLS)) {
 				return true;
 			}
 
-			template<int _ROWS, int _COLS>
-			bool operator!=(const Matrix<T,_ROWS, _COLS>& m) {
-				if((_ROWS != ROWS) || (_COLS != COLS)) {
-					return true;
-				}
-
-				for(int r = 0; r < ROWS; r++) {
-					for(int c = 0; c < COLS; c++) {
-						if(data[r][c] != m[r][c]) {
-							return true;
-						}
+			for (int r = 0; r < ROWS; r++) {
+				for (int c = 0; c < COLS; c++) {
+					if (data[r][c] != m[r][c]) {
+						return true;
 					}
 				}
-
-				return false;
 			}
-		};
+
+			return false;
+		}
 	};
 
 	typedef Matrix<float, 4, 4> Matrix4x4f;

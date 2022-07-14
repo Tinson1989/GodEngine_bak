@@ -13,7 +13,7 @@ namespace GodEngine {
 		virtual void Quit() noexcept;
 		virtual bool IsQuit() noexcept;
 	public:
-		GraphicsManager* mGraphicsManager;
+		//GraphicsManager* mGraphicsManager;
 
 	private:
 		bool mQuit;

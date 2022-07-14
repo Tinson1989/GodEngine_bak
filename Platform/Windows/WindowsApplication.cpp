@@ -1,5 +1,14 @@
 #include "WindowsApplication.hpp"
 
+#include <crtdbg.h>
+
+#include "glad/glad_wgl.h"
+#include <wingdi.h>
+
+int main() {
+	return 0;
+}
+
 namespace GodEngine {
 	static LRESULT CALLBACK TmpWndProc(HWND hWnd, UINT uiMsg, WPARAM wParam, LPARAM lParam) {
 		switch (uiMsg) {
@@ -17,10 +26,12 @@ namespace GodEngine {
 		WindowsApplication* pThis;
 		pThis = reinterpret_cast<WindowsApplication*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
 		switch (message) {
-		case WM_CREATE:
+		case WM_CREATE: {
 			LPCREATESTRUCT pCreateStruct = reinterpret_cast<LPCREATESTRUCT>(lParam);
 			SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pCreateStruct->lpCreateParams));
 			return 0;
+		}
+			
 		case WM_LBUTTONDOWN:
 			//todo 处理onkeyDown事件
 			return 0;

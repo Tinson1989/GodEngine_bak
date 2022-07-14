@@ -1,11 +1,14 @@
 add_rules("mode.debug", "mode.release", "mode.releasedbg", "mode.minsizerel")
+
+local externalPath = path.join(os.projectdir(), "External")
+
 --包含子目录
 local function importSubProject(file)
     includes(path.join("XMakeMgr",file))
 end
 
 set_project("GodEngine")
-set_languages("cxx17")
+-- set_languages("cxx17")
 if is_mode("debug") then
     set_suffixname("_d")
     add_defines("_DEBUG")
@@ -27,22 +30,20 @@ target("framework")
     add_files("Framework/**.cpp")
 
     --添加assimp库
-    local includePath = "External/Assimp/include"
     local libPath = ""
     if is_mode("debug") then
-        libPath = "External/Assimp/lib/assimp-vc143-mtd"
+        libPath = path.join(externalPath, "Assimp/lib/assimp-vc143-mtd")
     else
-        libPath = "External/Assimp/lib/assimp-vc143-mt"
+        libPath = path.join(externalPath, "Assimp/lib/assimp-vc143-mt")
     end
-    -- add_linkdirs(includePath)
     add_links(libPath)
-    add_includedirs("External/Assimp/include")
-    add_headerfiles("External/Assimp/include/**.h")
+    add_includedirs(path.join(externalPath, "Assimp/include"))
+    add_headerfiles(path.join(externalPath, "Assimp/include/**.h"))
 
     --添加glad库
-    add_includedirs("External/Glad/include")
-    add_headerfiles("External/Glad/include/**.h")
-    add_files("External/Glad/src/*.c")
+    -- add_includedirs("External/Glad/include")
+    -- add_headerfiles("External/Glad/include/**.h")
+    -- add_files("External/Glad/src/*.c")
     
 
 importSubProject("test.lua")
